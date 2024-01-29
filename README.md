@@ -173,7 +173,7 @@ teljes reprodukálását is lehetővé teszi. Ezeket az egyes elemzéseknél
 külön-külön is közölni fogom, ha valakit ez nem érdekel, a szürke
 hátteres részeket nyugodtan ugorja át. A technikai részleteket,
 beleértve az elemzéshez szükséges adatok előkészítését is, pedig egy
-külön fejezet mutatja be.
+[külön fejezet](#technikai-részletek) mutatja be.
 
 ## Eredmények
 
@@ -271,7 +271,8 @@ említett biztos minimumot és maximumot (a piros vonal a 15 perces
 határ):
 
 ``` r
-ggplot(TimeResult[variable=="GOKI"], aes(x = time, y = mean/BpPop, ymin = min/BpPop, ymax = max/BpPop)) +
+ggplot(TimeResult[variable=="GOKI"],
+       aes(x = time, y = mean/BpPop, ymin = min/BpPop, ymax = max/BpPop)) +
   geom_line() +  geom_ribbon(alpha = 0.2) +
   labs(x = "Idő [perc]", y = "Elért lakosok aránya [%]", caption = captionlab) +
   scale_y_continuous(label = scales::percent,
@@ -382,8 +383,9 @@ alapuló hozzájárulást jelentenek az ezzel kapcsolatos döntések optimális
 meghozatalához.
 
 Végezetül megjegyzem, hogy a fenti számítások alapjául szolgáló
-adatbázist RDS és CSV formátumokban is elérhetővé tettem, hogy
-megkönnyítsem a felhasználását más kutatásokban is.
+adatbázist [RDS](RawData.rds) és [CSV](RawData.csv) formátumokban is
+elérhetővé tettem, hogy megkönnyítsem a felhasználását más kutatásokban
+is.
 
 ## Technikai részletek
 
