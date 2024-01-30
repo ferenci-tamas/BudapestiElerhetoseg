@@ -6,13 +6,13 @@ Ferenci Tamás (<https://www.medstat.hu/>)
 - [Kérdésfeltevés](#kérdésfeltevés)
 - [Munkamódszer](#munkamódszer)
 - [Eredmények](#eredmények)
+- [Továbbfejlesztési lehetőségek](#továbbfejlesztési-lehetőségek)
 - [Technikai részletek](#technikai-részletek)
   - [Az adatok forrása](#az-adatok-forrása)
   - [Döntés a rács használata
     mellett](#döntés-a-rács-használata-mellett)
   - [Az útvonaltervezés végrehajtása](#az-útvonaltervezés-végrehajtása)
   - [Az adatok összekapcsolása](#az-adatok-összekapcsolása)
-- [Továbbfejlesztési lehetőségek](#továbbfejlesztési-lehetőségek)
 
 ## Összefoglaló
 
@@ -387,6 +387,51 @@ adatbázist [RDS](RawData.rds) és [CSV](RawData.csv) formátumokban is
 elérhetővé tettem, hogy megkönnyítsem a felhasználását más kutatásokban
 is.
 
+## Továbbfejlesztési lehetőségek
+
+Felsorolok néhány lehetőséget, melyeket a fenti elemzés nem vizsgál, de
+véleményem szerint érdekes továbbfejlesztési ötletek lehetnek:
+
+- Valódi mentőautó-profil megalkotása. Az OSRM [részletes
+  súgót](https://github.com/Project-OSRM/osrm-backend/blob/master/docs/profiles.md)
+  ad a profilok megalkotásához (a meglevő profilok, például [az
+  autó](https://github.com/Project-OSRM/osrm-backend/blob/master/profiles/car.lua)
+  tanulmányozási is hasznos), ez alapján meg lehet kísérelni a fenti,
+  nagyon egyszerű közelítésnél szofisztikáltabb mentőautó-profil
+  megalkotását.
+- A fentiekben mindössze két kórházat vizsgáltam, ez értelemszerűen
+  kiterjeszthető tetszőleges számú kórházra. (Igazából ez a kettő is
+  csak illusztrációként szerepelt – a munkám lényege a keretrendszernek
+  magának a megalkotása volt.) Sőt, ha valaki nagyon elszánt, elvileg
+  akár az összes kórházat is beviheti. Vagy akár az összes mentőállomást
+  is!
+- Ha megvan az összes kórház, akkor annak sincsen akadálya, hogy olyan
+  vizsgálatot rakjunk össze, ami az egész [beutalási
+  rend](https://www.mentok.hu/wp-content/uploads/2023/12/2024.-e%CC%81vi-beutala%CC%81si-rend-jav20231201.pdf)
+  adatait is integrálja, azaz figyelembe veszi, hogy mikor kinek melyik
+  kórházba kell eljutnia (adott betegséggel). Így akár összességében is
+  lehet nyilatkozni a Budapesten belüli sürgősségi ellátás időbeli
+  elérhetőségi lehetőségeiről.
+- Még merészebb módon akár ennek az optimalizálási lehetőségei is
+  vizsgálhatóak, hasonlóan ahhoz, ahogy a település-szintű vizsgálatnál
+  tettem a [kórháztelepítési
+  probléma](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#f%C3%BCggel%C3%A9k-a-k%C3%B3rh%C3%A1ztelep%C3%ADt%C3%A9s-megold%C3%A1sa-line%C3%A1ris-programoz%C3%A1ssal)
+  kapcsán.
+- A vizsgálat finomítása a tekintetben, hogy ne csak lélekszámot, hanem
+  valós szükségletet használjon (tehát, hogy figyelembe vegye a
+  területileg eltérő kockázatot) nagyon bonyolult kérdés, de talán egy
+  egyszerű kiinduló-problémájával meg lehet birkózni nyilvánosan
+  elérhető adatok alapján is: lekérve a KSH-tól a kerületek korfáját, és
+  kiszedve a kardiológiai irodalomból az infarktus életkor-függését,
+  hogyan lehet finomítani az elérhetőségi térképet, hogy jobban tükrözze
+  a szükségletet, tehát azt, hogy az egyes kerületekben vélhetően mennyi
+  infarktus fog történni?
+- Most, hogy megvan a vizsgálat és a módszertan mind a települések
+  közti, mind a településen belüli elérhetőségre, elképzelhető egy „több
+  skálájú” elérhetőségi elemzés az országra, mely összekapcsolja a
+  kettőt: települések szintjén indul, de adott településnél lemegy a
+  településen belüli szintre.
+
 ## Technikai részletek
 
 ### Az adatok forrása
@@ -630,48 +675,3 @@ megkönnyítsük az adataink mások által történő felhasználást:
 saveRDS(RawData, "RawData.rds")
 fwrite(RawData, "RawData.csv", dec = ",", sep =";", bom = TRUE)
 ```
-
-## Továbbfejlesztési lehetőségek
-
-Felsorolok néhány lehetőséget, melyeket a fenti elemzés nem vizsgál, de
-véleményem szerint érdekes továbbfejlesztési ötletek lehetnek:
-
-- Valódi mentőautó-profil megalkotása. Az OSRM [részletes
-  súgót](https://github.com/Project-OSRM/osrm-backend/blob/master/docs/profiles.md)
-  ad a profilok megalkotásához (a meglevő profilok, például [az
-  autó](https://github.com/Project-OSRM/osrm-backend/blob/master/profiles/car.lua)
-  tanulmányozási is hasznos), ez alapján meg lehet kísérelni a fenti,
-  nagyon egyszerű közelítésnél szofisztikáltabb mentőautó-profil
-  megalkotását.
-- A fentiekben mindössze két kórházat vizsgáltam, ez értelemszerűen
-  kiterjeszthető tetszőleges számú kórházra. (Igazából ez a kettő is
-  csak illusztrációként szerepelt – a munkám lényege a keretrendszernek
-  magának a megalkotása volt.) Sőt, ha valaki nagyon elszánt, elvileg
-  akár az összes kórházat is beviheti. Vagy akár az összes mentőállomást
-  is!
-- Ha megvan az összes kórház, akkor annak sincsen akadálya, hogy olyan
-  vizsgálatot rakjunk össze, ami az egész [beutalási
-  rend](https://www.mentok.hu/wp-content/uploads/2023/12/2024.-e%CC%81vi-beutala%CC%81si-rend-jav20231201.pdf)
-  adatait is integrálja, azaz figyelembe veszi, hogy mikor kinek melyik
-  kórházba kell eljutnia (adott betegséggel). Így akár összességében is
-  lehet nyilatkozni a Budapesten belüli sürgősségi ellátás időbeli
-  elérhetőségi lehetőségeiről.
-- Még merészebb módon akár ennek az optimalizálási lehetőségei is
-  vizsgálhatóak, hasonlóan ahhoz, ahogy a település-szintű vizsgálatnál
-  tettem a [kórháztelepítési
-  probléma](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#f%C3%BCggel%C3%A9k-a-k%C3%B3rh%C3%A1ztelep%C3%ADt%C3%A9s-megold%C3%A1sa-line%C3%A1ris-programoz%C3%A1ssal)
-  kapcsán.
-- A vizsgálat finomítása a tekintetben, hogy ne csak lélekszámot, hanem
-  valós szükségletet használjon (tehát, hogy figyelembe vegye a
-  területileg eltérő kockázatot) nagyon bonyolult kérdés, de talán egy
-  egyszerű kiinduló-problémájával meg lehet birkózni nyilvánosan
-  elérhető adatok alapján is: lekérve a KSH-tól a kerületek korfáját, és
-  kiszedve a kardiológiai irodalomból az infarktus életkor-függését,
-  hogyan lehet finomítani az elérhetőségi térképet, hogy jobban tükrözze
-  a szükségletet, tehát azt, hogy az egyes kerületekben vélhetően mennyi
-  infarktus fog történni?
-- Most, hogy megvan a vizsgálat és a módszertan mind a települések
-  közti, mind a településen belüli elérhetőségre, elképzelhető egy „több
-  skálájú” elérhetőségi elemzés az országra, mely összekapcsolja a
-  kettőt: települések szintjén indul, de adott településnél lemegy a
-  településen belüli szintre.
