@@ -17,7 +17,7 @@ Ferenci Tamás (<https://www.medstat.hu/>)
 ## Összefoglaló
 
 - Egy [korábbi
-  munkámban](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg)
+  munkámban](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg)
   azt vizsgáltam, hogy a különböző magyarországi települések között
   milyen gyorsan lehet elérni közúton. Ugyanez a kérdés felvethető egy
   településen belül is; itt most azt az esetet fogom megvizsgálni, ami
@@ -44,7 +44,7 @@ Ferenci Tamás (<https://www.medstat.hu/>)
 ## Kérdésfeltevés
 
 Egy [korábbi
-munkámban](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg)
+munkámban](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg)
 azt vizsgáltam, hogy a különböző magyarországi települések között milyen
 gyorsan lehet elérni közúton; az így létrehozott adatbázis számos
 érdekes kérdés vizsgálatát tette lehetővé, amiket be is mutattam az
@@ -99,7 +99,7 @@ kérdésekre igyekszem válaszolni.
 ## Munkamódszer
 
 A kérdést a [korábbi
-munkámhoz](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg)
+munkámhoz](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg)
 nagyon hasonló módon oldottam meg, így itt csak egészen rövid foglalom
 össze a munkamódszert, minden másban utalok az ott leírtakra.
 
@@ -149,7 +149,7 @@ kapcsolatban azonban van pár nagyon fontos megjegyzés:
   meglepő lehet, hiszen a korábbi munkámban településekről volt szó,
   egyáltalán nem koordinátákról, de ha valaki jobban megnézi, akkor
   látni fogja, hogy ott [az
-  történt](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#magyarorsz%C3%A1g-telep%C3%BCl%C3%A9seinek-adatai),
+  történt](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg#magyarorsz%C3%A1g-telep%C3%BCl%C3%A9seinek-adatai),
   hogy a települések térképadat szerinti területének vettem a
   középpontját, és ezt, mint koordinátát adtam át az OSRM-nek. (Ha
   valaki az OSRM honlapjára felmegy, akkor ott talál egy [online
@@ -182,7 +182,7 @@ elérni! Avagy, a szimmetrikusság feltételezése esetén ezzel
 egyenértékűen: hová lehet a GOKI-ból elérni mentővel 15 percen belül. A
 térképen színskála mutatja az elérési idő pontos értékét, a piros görbe
 pedig a 15 perces határt, azaz a 15 perchez tartozó [izokrón
-görbét](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#kis-t%C3%B6rt%C3%A9nelmi-kit%C3%A9r%C5%91-az-izokr%C3%B3n-t%C3%A9rk%C3%A9pek-kapcs%C3%A1n):
+görbét](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg#kis-t%C3%B6rt%C3%A9nelmi-kit%C3%A9r%C5%91-az-izokr%C3%B3n-t%C3%A9rk%C3%A9pek-kapcs%C3%A1n):
 
 ``` r
 ggplot(RawData, aes(x = lon, y = lat)) + geom_raster(aes(fill = durationGOKI/60)) +
@@ -228,7 +228,7 @@ vizsgálati módszer igen: hogyan lehet egy ilyen kérdést adatokra
 alapozottan elemezni?
 
 A megoldáshoz kölcsönvesszük [azt az
-ötletet](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#az-el%C3%A9r%C3%A9si-id%C5%91k-eloszl%C3%A1sa),
+ötletet](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg#az-el%C3%A9r%C3%A9si-id%C5%91k-eloszl%C3%A1sa),
 amit a korábbi elemzésben használtunk: azt fogjuk vizsgálni, hogy hány
 lakos számára érhető el a kórház adott időn belül / hány lakos érhető el
 a kórházból adott időn belül (megint csak, a szimmetrikusság
@@ -285,7 +285,7 @@ ggplot(TimeResult[variable=="GOKI"],
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 A korábbi munkámban [említett
-limitáció](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#az-orsz%C3%A1g-k%C3%B6z%C3%A9ppontja-avagy-hov%C3%A1-telep%C3%ADts%C3%BCnk-k%C3%B3rh%C3%A1zat)
+limitáció](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg#az-orsz%C3%A1g-k%C3%B6z%C3%A9ppontja-avagy-hov%C3%A1-telep%C3%ADts%C3%BCnk-k%C3%B3rh%C3%A1zat)
 itt is érvényes: ez kizárólag a lélekszámot tükrözi, nem törődve azzal,
 hogy a megbetegedések fellépésének nem biztos, hogy állandó a kockázata
 Budapest területén belül, sőt, biztos, hogy nem állandó, hiszen függ az
@@ -377,7 +377,7 @@ ad hozzá, ami nem volt a GOKI-ból is 15 perc alatt elérhető.)
 Valójában a kórházak telepítését, ügyeletbe való bevonását természetesen
 sok más tényező befolyásolja mint az elérhetőségi viszonyok (ennek egy
 fontos aspektusáról egy [másik
-írásomban](https://github.com/tamas-ferenci/GondolatokAMagyarKorhaziAdatokElemzeserolEsNehanyEgeszsegpolitikaiMegjegyzes)
+írásomban](github.com/ferenci-tamas/korhaz-agyszam-betegforgalom-halalozas-egeszsegpolitika)
 hosszabban is beszéltem), de az ilyen információk is lényeges, adatokon
 alapuló hozzájárulást jelentenek az ezzel kapcsolatos döntések optimális
 meghozatalához.
@@ -415,7 +415,7 @@ véleményem szerint érdekes továbbfejlesztési ötletek lehetnek:
 - Még merészebb módon akár ennek az optimalizálási lehetőségei is
   vizsgálhatóak, hasonlóan ahhoz, ahogy a település-szintű vizsgálatnál
   tettem a [kórháztelepítési
-  probléma](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#f%C3%BCggel%C3%A9k-a-k%C3%B3rh%C3%A1ztelep%C3%ADt%C3%A9s-megold%C3%A1sa-line%C3%A1ris-programoz%C3%A1ssal)
+  probléma](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg?tab=readme-ov-file#a-k%C3%B3rh%C3%A1ztelep%C3%ADt%C3%A9s-megold%C3%A1sa-line%C3%A1ris-programoz%C3%A1ssal)
   kapcsán.
 - A vizsgálat finomítása a tekintetben, hogy ne csak lélekszámot, hanem
   valós szükségletet használjon (tehát, hogy figyelembe vegye a
@@ -437,7 +437,7 @@ véleményem szerint érdekes továbbfejlesztési ötletek lehetnek:
 ### Az adatok forrása
 
 A térképadatok forrása, ugyanúgy, mint a [korábbi
-munkámban](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg),
+munkámban](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg),
 az OpenStreetMap (OSM), egész pontosan annak egy ilyen adatok
 szolgáltatására szakosodott [magyar
 aloldala](https://data2.openstreetmap.hu/hatarok/index.php):
@@ -585,7 +585,7 @@ fwrite(BpSamp[, .(lon, lat)], "osrmlocsBpGrid.csv")
 ### Az útvonaltervezés végrehajtása
 
 Az útvonaltervezést, a [korábbihoz
-hasonlóan](https://github.com/tamas-ferenci/MagyarorszagKozutiElerhetoseg#az-%C3%BAtvonaltervez%C3%A9s-v%C3%A9grehajt%C3%A1sa),
+hasonlóan](https://github.com/ferenci-tamas/MagyarorszagKozutiElerhetoseg#az-%C3%BAtvonaltervez%C3%A9s-v%C3%A9grehajt%C3%A1sa),
 most is node.js szkript segítségével hajtottam végre. Egy különbséggel:
 a magyarországi település-szintű számolásnál teljes mátrixot
 számoltattam (az `osrm.table` segítségével), azaz minden pontból
