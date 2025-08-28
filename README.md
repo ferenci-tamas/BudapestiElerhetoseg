@@ -591,7 +591,7 @@ a magyarországi település-szintű számolásnál teljes mátrixot
 számoltattam (az `osrm.table` segítségével), azaz minden pontból
 meghatároztam az elérési időt mindegyik pontba, itt azonban ez
 reménytelen feladat lenne. (Településből 3000 körüli van, budapesti
-címből, még a rácspontos megoldással is, 144778.) Ennyi pont között
+címből, még a rácspontos megoldással is, 144761.) Ennyi pont között
 teljesen reménytelen lenne a mátrix-szerű számítás, szerencsére azonban
 szükség sincs rá, legalábbis a kérdésfelvetésben szereplő problémához:
 ha adott kórház elérhetőségét vizsgáljuk, akkor elég annak elérhetőségét
